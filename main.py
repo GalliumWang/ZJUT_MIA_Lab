@@ -10,7 +10,7 @@ def get_heights(filename: str) -> list:
     # convert to grayscale, then binary
     image = io.imread(filename)
     im = rgb2gray(image)
-    binary_im = im < threshold_otsu(im)
+    binary_im = im > threshold_otsu(im)
 
     # label connected regions as objects
     labeled = label(binary_im)
@@ -37,4 +37,4 @@ def get_heights(filename: str) -> list:
         sequence.append(int(ratio - 1))
     return sequence
 
-print(get_heights("./test3.jpg"))
+print(get_heights("./img/test8.jpg"))
