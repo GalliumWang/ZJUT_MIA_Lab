@@ -84,7 +84,7 @@ notes = {
 
 
 
-melody = [
+mario_melody = [
   notes['E7'], notes['E7'], 0, notes['E7'],
   0, notes['C7'], notes['E7'], 0,
   notes['G7'], 0, 0,  0,
@@ -110,7 +110,7 @@ melody = [
   0, notes['E7'], 0, notes['C7'],
   notes['D7'], notes['B6'], 0, 0
 ]
-tempo = [
+mario_tempo = [
   12, 12, 12, 12,
   12, 12, 12, 12,
   12, 12, 12, 12,
@@ -609,7 +609,7 @@ if __name__ == '__main__':		# Program start from here
 		play(star_wars_melody, star_wars_tempo, 0.50, 1.000)
 		time.sleep(2)
 		print "Super Mario Theme"
-		play(melody, tempo, 1.3, 0.800)
+		play(mario_melody, mario_tempo, 1.3, 0.800)
 		time.sleep(2)
 		print "Super Mario Underworld Theme"
 		play(underworld_melody, underworld_tempo, 1.3, 0.800)
