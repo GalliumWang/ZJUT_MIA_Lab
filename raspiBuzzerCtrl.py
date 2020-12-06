@@ -54,12 +54,19 @@ def play(melody,tempo,pause,pace=0.800):
 def StartControlBuzzer(CurrentCode:list)
 	try:
 		setup()
+
+
 		print "Super Mario Theme"
-		play(mario_melody, mario_tempo, 1.3, 0.800)
+		play(beat_maps["Super Mario Theme"][0], beat_maps["Super Mario Theme"][1],
+			 beat_maps["Super Mario Theme"][2], beat_maps["Super Mario Theme"][3])
+
 		time.sleep(2)
+
 		print "Super Mario Underworld Theme"
-		play(underworld_melody, underworld_tempo, 1.3, 0.800)
+		play(beat_maps["Super Mario Underworld Theme"][0], beat_maps["Super Mario Underworld Theme"][1],
+			 beat_maps["Super Mario Underworld Theme"][2], beat_maps["Super Mario Underworld Theme"][3])
 		
 		destroy()
+
 	except KeyboardInterrupt:  	# When 'Ctrl+C' is pressed, the child program destroy() will be  executed.
 		destroy()

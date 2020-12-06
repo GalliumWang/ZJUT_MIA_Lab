@@ -518,10 +518,8 @@ final_countdown_tempo = [
     1,
 ]
 
-beat_maps = {"Super Mario Theme": (mario_melody, mario_tempo,),
-             "Super Mario Underworld Theme": (underworld_melody, underworld_tempo,)}
-
-
+beat_maps = {"Super Mario Theme": (mario_melody, mario_tempo,1.3,0.800,),
+             "Super Mario Underworld Theme": (underworld_melody, underworld_tempo, 1.3, 0.800,)}
 
 
 # print
