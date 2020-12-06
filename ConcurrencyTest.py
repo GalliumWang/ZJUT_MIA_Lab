@@ -7,10 +7,7 @@ from barcode_scanner_video import StartBarcodeScan
 
 CurrentCode = [""]	# TODO: to be improved
 					# TODO:add mutex for code that modify it
-
 CurrentCode_mutex=threading.Lock()
-
-
 
 def PrepareForCodeScan():
 	ap = argparse.ArgumentParser()
@@ -39,17 +36,17 @@ def PrepareForCodeScan():
 BarcodeScanThread,vs=PrepareForCodeScan()
 BarcodeScanThread.start()
 
+
 SwichControl=True
-
 CodeProcessed=""
-
 while(True):
-	if(SwichControl and CurrentCode[0]!=CodeProcessed):
-		CodeProcessed=CurrentCode[0]
-		print(CodeProcessed)
-
-
-
+	CurrentCode_mutex.acquire()
+	try:
+		if(SwichControl and CurrentCode[0]!=CodeProcessed):
+			CodeProcessed=CurrentCode[0]
+			print(CodeProcessed)
+	finally:
+		CurrentCode_mutex.release()
 
 
 BarcodeScanThread.join()

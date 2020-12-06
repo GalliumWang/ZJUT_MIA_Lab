@@ -1,9 +1,10 @@
 from pyzbar import pyzbar
 import imutils
 import cv2
+import threading
 
 #also used as for module part
-def StartBarcodeScan(CurrentCode,CurrentCode_mutex, vs):
+def StartBarcodeScan(CurrentCode,CurrentCode_mutex:threading.Lock, vs):
 	# loop over the frames from the video stream
 	while True:
 		# grab the frame from the threaded video stream and resize it to
@@ -35,9 +36,15 @@ def StartBarcodeScan(CurrentCode,CurrentCode_mutex, vs):
 			# the timestamp + barcode to disk and update the set
 
 
-			if (barcodeData != CurrentCode[0]):#and (barcodeType in AcceptedBarcodeType):
-				CurrentCode[0]=barcodeData
-				print("新增一个二维码")
+			CurrentCode_mutex.acquire()
+			try:
+				if (barcodeData != CurrentCode[0]):#and (barcodeType in AcceptedBarcodeType):
+					CurrentCode[0]=barcodeData
+					print("新增一个二维码")
+			finally:
+				CurrentCode_mutex.release()
+
+
 
 		# show the output frame
 		cv2.imshow("Code Scanner", frame)
