@@ -12,6 +12,7 @@ import RPi.GPIO as GPIO
 import time
 from BeatsInfo import notes
 from BeatsInfo import beat_maps
+import  random
 
 buzzer_pin = 27
 
@@ -48,23 +49,56 @@ def play(melody,tempo,pause,pace=0.800):
 		
 		pauseBetweenNotes = noteDuration * pause
 		time.sleep(pauseBetweenNotes)
+
+
+def BeatMapRepermute(melody:list,tempo:list)->tuple:
+	# para Error
+	if(len(list)!=len(tempo)):
+		raise RuntimeError
+
+	newMelody=[]
+	newTempo=[]
+
+	BeatLength=len(melody)
+
+	index=0
+	for _  in range(BeatLength):
+		CaseInt=random.randint(1,10)
+		if(CaseInt==10):
+			index=random.randint(0,BeatLength-1)
+		else:
+			pass
+
+		#process for current indexed int
+		newMelody.append(melody[index])
+		newTempo.append((tempo[index]))
+
+
+		index=(index+1)%BeatLength
+
+
+	return (newMelody,newTempo)
 	
-	
+
+
+def playSong(songname:str):
+	print("play "+songname)
+	newMelody,newTempo=BeatMapRepermute(beat_maps[songname][0], beat_maps[songname][1])
+	play(newMelody,newTempo,
+		 beat_maps[songname][2], beat_maps[songname][3])
+
+def playSong(melody:list,tempo:list,pause=0.30,pace=0.800):
+	print("play song from code data")
+	newMelody, newTempo = BeatMapRepermute(melody,tempo)
+	play(newMelody,newTempo,
+		 pause,pace)
+
+
 
 def StartControlBuzzer(CurrentCode:list)
 	try:
 		setup()
-
-
-		print "Super Mario Theme"
-		play(beat_maps["Super Mario Theme"][0], beat_maps["Super Mario Theme"][1],
-			 beat_maps["Super Mario Theme"][2], beat_maps["Super Mario Theme"][3])
-
-		time.sleep(2)
-
-		print "Super Mario Underworld Theme"
-		play(beat_maps["Super Mario Underworld Theme"][0], beat_maps["Super Mario Underworld Theme"][1],
-			 beat_maps["Super Mario Underworld Theme"][2], beat_maps["Super Mario Underworld Theme"][3])
+		#playSong("***")
 		
 		destroy()
 
