@@ -3,7 +3,7 @@ import imutils
 import cv2
 
 #also used as for module part
-def StartBarcodeScan(BarcodeSet,vs):
+def StartBarcodeScan(CurrentCode,CurrentCode_mutex, vs):
 	# loop over the frames from the video stream
 	while True:
 		# grab the frame from the threaded video stream and resize it to
@@ -33,8 +33,10 @@ def StartBarcodeScan(BarcodeSet,vs):
 
 			# if the barcode text is currently not in our CSV file, write
 			# the timestamp + barcode to disk and update the set
-			if (barcodeData not in found):#and (barcodeType in AcceptedBarcodeType):
-				found.add(barcodeData)
+
+
+			if (barcodeData != CurrentCode[0]):#and (barcodeType in AcceptedBarcodeType):
+				CurrentCode[0]=barcodeData
 				print("新增一个二维码")
 
 		# show the output frame
