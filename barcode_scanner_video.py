@@ -43,6 +43,14 @@ def StartBarcodeScan(BarcodeSet,vs):
 				found.add(barcodeData)
 				print("新增一个二维码")
 
+		# show the output frame
+		cv2.imshow("Code Scanner", frame)
+		key = cv2.waitKey(1) & 0xFF
+
+		# if the `q` key was pressed, break from the loop
+		if key == ord("q"):
+			break
+
 
 # 设置启动参数
 ap = argparse.ArgumentParser()
@@ -77,12 +85,11 @@ found = set()
 
 BarcodeScanThread = threading.Thread(target=StartBarcodeScan, args=(found,vs,))
 BarcodeScanThread.start()
-
 BarcodeScanThread.join()
 
 
 # close the output CSV file do a bit of cleanup
-print("[INFO] cleaning up...")
+print("[INFO] 结束opencv进程")
 
 # csv.close()
 cv2.destroyAllWindows()
