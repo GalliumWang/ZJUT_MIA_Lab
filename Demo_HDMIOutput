@@ -1,0 +1,27 @@
+import musicalbeeps
+
+
+player = musicalbeeps.Player(volume = 0.3,
+                            mute_output = False)
+
+# Examples:
+
+# To play an A on default octave n°4 for 0.2 seconds
+
+player.play_note("C3", 0.2)#do
+player.play_note("D3", 0.2)#re
+player.play_note("E3", 0.2)#mi
+player.play_note("F3", 0.2)#fa
+player.play_note("G3", 0.2)#so
+player.play_note("A3", 0.2)#la
+player.play_note("B3", 0.2)#si
+
+
+# # To play a G flat on octave n°3 for 2.5 seconds
+# player.play_note("G3b", 2.5)
+
+# # To play a F sharp on octave n°5 for the default duration of 0.5 seconds
+# player.play_note("F5#")
+
+# To pause the player for 3.5 seconds
+player.play_note("pause", 3.5)
