@@ -21,8 +21,8 @@ def play(melody, tempo, pause, pace=0.800):
 
 def BeatMapRepermute(melody: list, tempo: list) -> tuple:
     # para Error
-    if len(list) != len(tempo):
-        raise RuntimeError
+    # if len(list) != len(tempo):
+    #     raise RuntimeError
 
     newMelody = []
     newTempo = []
@@ -56,7 +56,7 @@ def BeatMapRepermute(melody: list, tempo: list) -> tuple:
 # 	play(newMelody,newTempo,
 # 		 beat_maps[songname][2], beat_maps[songname][3])
 
-def playSong(melody: list, tempo: list, pace=0.3, rate=0.3):
+def playSong(melody: list, tempo: list, pace=0.15, rate=0.15):
     if markov:
         melody, tempo = BeatMapRepermute(melody, tempo)
     else:
