@@ -69,32 +69,63 @@ notes = {
     'D8': 4699, 'DS8': 4978
 }
 
+# mario_melody = [
+#     notes['E7'], notes['E7'], 0, notes['E7'],
+#     0, notes['C7'], notes['E7'], 0,
+#     notes['G7'], 0, 0, 0,
+#     notes['G6'], 0, 0, 0,
+#
+#     notes['C7'], 0, 0, notes['G6'],
+#     0, 0, notes['E6'], 0,
+#     0, notes['A6'], 0, notes['B6'],
+#     0, notes['AS6'], notes['A6'], 0,
+#
+#     notes['G6'], notes['E7'], notes['G7'],
+#     notes['A7'], 0, notes['F7'], notes['G7'],
+#     0, notes['E7'], 0, notes['C7'],
+#     notes['D7'], notes['B6'], 0, 0,
+#
+#     notes['C7'], 0, 0, notes['G6'],
+#     0, 0, notes['E6'], 0,
+#     0, notes['A6'], 0, notes['B6'],
+#     0, notes['AS6'], notes['A6'], 0,
+#
+#     notes['G6'], notes['E7'], notes['G7'],
+#     notes['A7'], 0, notes['F7'], notes['G7'],
+#     0, notes['E7'], 0, notes['C7'],
+#     notes['D7'], notes['B6'], 0, 0
+# ]
+
+
 mario_melody = [
-    notes['E7'], notes['E7'], 0, notes['E7'],
-    0, notes['C7'], notes['E7'], 0,
-    notes['G7'], 0, 0, 0,
-    notes['G6'], 0, 0, 0,
+    'E7', 'E7', "pause", 'E7',
+    "pause", 'C7', 'E7', "pause",
+    'G7', "pause", "pause", "pause",
+    'G6', "pause", "pause", "pause",
 
-    notes['C7'], 0, 0, notes['G6'],
-    0, 0, notes['E6'], 0,
-    0, notes['A6'], 0, notes['B6'],
-    0, notes['AS6'], notes['A6'], 0,
+    'C7', "pause", "pause", 'G6',
+    "pause", "pause", 'E6', "pause",
+    "pause", 'A6', "pause", 'B6',
+    "pause", 'AS6', 'A6', "pause",
 
-    notes['G6'], notes['E7'], notes['G7'],
-    notes['A7'], 0, notes['F7'], notes['G7'],
-    0, notes['E7'], 0, notes['C7'],
-    notes['D7'], notes['B6'], 0, 0,
+    'G6', 'E7', 'G7',
+    'A7', "pause", 'F7', 'G7',
+    "pause", 'E7', "pause", 'C7',
+    'D7', 'B6', "pause", "pause",
 
-    notes['C7'], 0, 0, notes['G6'],
-    0, 0, notes['E6'], 0,
-    0, notes['A6'], 0, notes['B6'],
-    0, notes['AS6'], notes['A6'], 0,
+    'C7', "pause", "pause", 'G6',
+    "pause", "pause", 'E6', "pause",
+    "pause", 'A6', "pause", 'B6',
+    "pause", 'AS6', 'A6', "pause",
 
-    notes['G6'], notes['E7'], notes['G7'],
-    notes['A7'], 0, notes['F7'], notes['G7'],
-    0, notes['E7'], 0, notes['C7'],
-    notes['D7'], notes['B6'], 0, 0
+    'G6', 'E7', 'G7',
+    'A7', "pause", 'F7', 'G7',
+    "pause", 'E7', "pause", 'C7',
+    'D7', 'B6', "pause", "pause"
 ]
+
+
+
 mario_tempo = [
     12, 12, 12, 12,
     12, 12, 12, 12,
