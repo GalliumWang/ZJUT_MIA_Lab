@@ -56,7 +56,7 @@ def BeatMapRepermute(melody: list, tempo: list) -> tuple:
 # 	play(newMelody,newTempo,
 # 		 beat_maps[songname][2], beat_maps[songname][3])
 
-def playSong(melody: list, tempo: list, pace=0.15, rate=0.15):
+def playSong(melody: list, tempo: list, pace=0.015, rate=0.015):
     if markov:
         melody, tempo = BeatMapRepermute(melody, tempo)
     else:
