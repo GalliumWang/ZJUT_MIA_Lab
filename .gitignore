@@ -1,2 +1,5 @@
 .vscode/*
 img/*
+barcode_data/*
+Test_*
+/test.py
