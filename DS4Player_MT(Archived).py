@@ -2,10 +2,14 @@ import musicalbeeps
 import pygame
 import threading
 
+# FIXME real time response
+#
+
+
 player = musicalbeeps.Player(volume=0.3, mute_output=False)
 
 
-def note_play(note: str, scale: int = 4, duration: float = 10, player=player):
+def note_play(note: str, scale: int = 4, duration: float = 0.5, player=player):
     noteConverter = {"do": "C", "re": "D", "mi": "E", "fa": "F", "so": "G", "la": "A", "si": "B"}
 
     trueNote = noteConverter[note]
