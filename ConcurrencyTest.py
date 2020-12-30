@@ -6,7 +6,6 @@ import threading
 from barcode_scanner_video import StartBarcodeScan
 
 CurrentCode = [""]	# TODO: to be improved
-					# TODO:add mutex for code that modify it
 CurrentCode_mutex=threading.Lock()
 
 def PrepareForCodeScan():

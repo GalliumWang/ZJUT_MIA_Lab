@@ -71,8 +71,11 @@ def playSongToHDMI(songName):
     playSong(melody, tempo)
 
 
+def playSongToHDMIFromQrcode(melody_list, tempo_list):
+    playSong(melody_list, tempo_list)
+
+
 CurrentCode = [""]  # TODO: to be improved
-# TODO:add mutex for code that modify it
 CurrentCode_mutex = threading.Lock()
 
 
@@ -101,21 +104,57 @@ def PrepareForCodeScan():
     return BarcodeScanThread, vs
 
 
+def processRawCode(raw: str):
+    melody_data = raw.split("|")[0]
+    tempo_data = raw.split("|")[1]
+    melody_list = []
+    tempo_list = []
+
+    for i in melody_data.split(","):
+        melody_list.append(i)
+
+    for i in tempo_data.split(","):
+        tempo_list.append(int(i))
+
+    return melody_list, tempo_list
 
 
 BarcodeScanThread, vs = PrepareForCodeScan()
 BarcodeScanThread.start()
 
 SwichControl = True
-CodeProcessed = ""
-while (True):
+CodeRaw = ""
+
+# TODO add mutex
+current_melody = None
+current_tempo = None
+
+
+def repeatSongPlaying():
+    while True:
+        if current_tempo is not None and current_melody is not None:
+            _current_melody = current_melody.copy()
+            _current_tempo = current_tempo.copy()
+            print("switch song")
+            print(_current_melody)
+            print(_current_tempo)
+            playSongToHDMIFromQrcode(_current_melody, _current_tempo)
+        else:
+            continue
+
+
+PlayThread=threading.Thread(target=repeatSongPlaying)
+PlayThread.start()
+
+
+while True:
     CurrentCode_mutex.acquire()
     try:
-        if (SwichControl and CurrentCode[0] != CodeProcessed):
-            CodeProcessed = CurrentCode[0]
-            print(CodeProcessed)
+        if SwichControl and CurrentCode[0] != CodeRaw:
+            CodeRaw = CurrentCode[0]
+            # print(CodeRaw)
+            current_melody, current_tempo = processRawCode(CodeRaw)
+
 
     finally:
         CurrentCode_mutex.release()
-
-
