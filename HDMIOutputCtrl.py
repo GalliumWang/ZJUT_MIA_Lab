@@ -111,10 +111,10 @@ def processRawCode(raw: str):
     tempo_list = []
 
     for i in melody_data.split(","):
-        melody_list.append(i)
+        melody_list.append(i.strip())
 
     for i in tempo_data.split(","):
-        tempo_list.append(int(i))
+        tempo_list.append(int(i.strip()))
 
     return melody_list, tempo_list
 
@@ -136,8 +136,8 @@ def repeatSongPlaying():
             _current_melody = current_melody.copy()
             _current_tempo = current_tempo.copy()
             print("switch song")
-            print(_current_melody)
-            print(_current_tempo)
+            # print(_current_melody)
+            # print(_current_tempo)
             playSongToHDMIFromQrcode(_current_melody, _current_tempo)
         else:
             continue
