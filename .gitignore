@@ -1,2 +1,4 @@
 .vscode/*
 img/*
+/.idea/*
+/barcode_data/*
