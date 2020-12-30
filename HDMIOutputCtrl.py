@@ -100,5 +100,22 @@ def PrepareForCodeScan():
     BarcodeScanThread = threading.Thread(target=StartBarcodeScan, args=(CurrentCode, CurrentCode_mutex, vs,))
     return BarcodeScanThread, vs
 
+
+
+
 BarcodeScanThread, vs = PrepareForCodeScan()
 BarcodeScanThread.start()
+
+SwichControl = True
+CodeProcessed = ""
+while (True):
+    CurrentCode_mutex.acquire()
+    try:
+        if (SwichControl and CurrentCode[0] != CodeProcessed):
+            CodeProcessed = CurrentCode[0]
+            print(CodeProcessed)
+
+    finally:
+        CurrentCode_mutex.release()
+
+
