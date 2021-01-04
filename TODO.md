@@ -5,3 +5,4 @@
 - output to buzzer
 - DS4 ctrl for LED
 - refactor structure
+- control note play by stick ball
