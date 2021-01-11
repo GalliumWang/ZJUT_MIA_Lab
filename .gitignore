@@ -3,3 +3,4 @@ img/*
 /.idea/*
 /barcode_data/*
 /DATA/*
+__pycache__/*
