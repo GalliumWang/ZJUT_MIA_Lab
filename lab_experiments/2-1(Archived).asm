@@ -1,0 +1,29 @@
+A8254    EQU  06C0H   ;8254计数器0端口地址
+B8254    EQU  06C2H   ;8254计数器1端口地址
+C8254    EQU  06C4H   ;8254计数器2端口地址
+CON8254  EQU  06C6H   ;8254 控制寄存器端口地址
+ 
+SSTACK	SEGMENT STACK
+		DW 32 DUP(?)
+SSTACK	ENDS
+CODE		SEGMENT
+		ASSUME CS:CODE
+START:	MOV DX, CON8254			;8254
+		MOV AL, 36H				;0011 0110计数器0，方式3
+		OUT DX, AL
+		MOV DX, A8254
+		MOV AL, 0E8H                ；03E8H  --> 1000
+		OUT DX, AL
+		MOV AL, 03H ; 多余步骤
+		OUT DX, AL    ;多余
+		MOV DX, CON8254			;8254
+		MOV AL, 76H				;0111 0110计数器1，方式3
+		OUT DX, AL
+		MOV DX, B8254
+		MOV AL, 0E8H                ；03E8H  --> 1000
+		OUT DX, AL
+		MOV AL, 03H ;多余步骤
+		OUT DX, AL    ；多余
+AA1:		JMP AA1
+CODE		ENDS
+		END  START
