@@ -1,0 +1,26 @@
+environment:
+  TWINE_PASSWORD:
+    secure: 6vyZYm5TvgSek4Q34DdXzw==
+
+  matrix:
+    - PYTHON: "C:\\Python37"
+    - PYTHON: "C:\\Python38"
+    - PYTHON: "C:\\Python37-x64"
+    - PYTHON: "C:\\Python38-x64"
+
+install:
+  - "SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%"
+  - "python --version"
+  - "pip3 install --upgrade pip"
+  - "pip3 install --upgrade wheel setuptools twine"
+
+build: off
+
+test_script:
+  - "appveyor/build.cmd %PYTHON%\\python.exe setup.py test"
+
+after_test:
+  - "appveyor/build.cmd %PYTHON%\\python.exe setup.py bdist_wheel"
+
+deploy_script:
+  - "appveyor/deploy.cmd"
