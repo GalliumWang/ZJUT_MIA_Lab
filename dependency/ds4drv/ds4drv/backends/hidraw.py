@@ -33,6 +33,8 @@ class HidrawDS4Device(DS4Device):
 
         super(HidrawDS4Device, self).__init__(name, addr, type)
 
+
+    # TODO
     def read_report(self):
         try:
             ret = self.fd.readinto(self.buf)
